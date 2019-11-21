@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit">
-    <title>H+ 后台主题UI框架 - 主页</title>
+    <title>神木君意</title>
     <!--[if lt IE 9]>
     <meta http-equiv="refresh" content="0;ie.html" />
     <![endif]-->
@@ -27,7 +27,7 @@
                         <span><img alt="image" class="img-circle" src="../../Hplus/img/profile_small.jpg" /></span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
-                                   <span class="block m-t-xs"><strong class="font-bold">Beaut-zihan</strong></span>
+                                   <span class="block m-t-xs"><strong class="font-bold"><?= \Yii::$app->session['adminUserName']?></strong></span>
                                    <span class="text-muted text-xs block">超级管理员<b class="caret"></b></span>
                                 </span>
                         </a>
@@ -37,7 +37,7 @@
                             <li><a class="J_menuItem" href="contacts.html">联系我们</a></li>
                             <li><a class="J_menuItem" href="mailbox.html">信箱</a></li>
                             <li class="divider"></li>
-                            <li><a href="login.html">安全退出</a>
+                            <li><a onclick="loginOut()">安全退出</a>
                             </li>
                         </ul>
                     </div>
@@ -917,3 +917,27 @@
 <script src="../../Hplus/js/plugins/pace/pace.min.js"></script>
 </body>
 </html>
+<script>
+    function loginOut(){
+        $.ajax({
+            url: '<?= \Yii::$app->urlManager->createUrl(['admin/login/login-out'])?>',
+            dataType: 'json',
+            success:function(data){
+                if(data.code = 200){
+                    layer.open({
+                        content:data.msg,
+                        icon:1,
+                        success: function(){
+                            setTimeout(function(){
+                                window.location.href="<?= \Yii::$app->urlManager->createUrl(['admin/login/index'])?>";
+                            },1000)
+                        }
+                    });
+                }
+            },
+            error:function(){
+                console.log("提交ajax函数异常");
+            },
+        });
+    }
+</script>

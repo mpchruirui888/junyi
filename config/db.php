@@ -2,9 +2,9 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=yii2basic',
+    'dsn' => 'mysql:host=127.0.0.1:3306;dbname=junyi',
     'username' => 'root',
-    'password' => '',
+    'password' => 'rui123456',
     'charset' => 'utf8',
     'tablePrefix' => 'jy_',  //数据库表名前缀
 
