@@ -9,8 +9,13 @@
 namespace app\modules\admin\controllers;
 
 
+use app\models\AdminUser;
+use app\modules\admin\models\LoginForm;
+
 class LoginController  extends Controller
 {
+
+
     public function actionIndex()
     {
        return  $this->renderPartial('login');
@@ -18,7 +23,15 @@ class LoginController  extends Controller
 
     public function actionLogin()
     {
-        echo "22";
-        die;
+        $model =  new LoginForm();
+        $model->attributes = \Yii::$app->request->post();
+        $result = $model->check();
+        return $result;
+    }
+
+    public function actionLoginOut()
+    {
+        $model =  new LoginForm();
+        return  $model->loginOut();
     }
 }
