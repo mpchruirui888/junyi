@@ -10,6 +10,7 @@
     <link href="<?php ROOT_PATH?>/Hplus/css/style.css" rel="stylesheet">
     <link href="<?php ROOT_PATH?>/Hplus/css/font-awesome.min.css" rel="stylesheet">
     <link href="<?php ROOT_PATH?>/js/layui/layui/css/layui.css" rel="stylesheet">
+    <link rel="stylesheet" href=<?php ROOT_PATH?>/font-aeesome-4.7.0/css/font-awesome.min.css" >
 </head>
 
 

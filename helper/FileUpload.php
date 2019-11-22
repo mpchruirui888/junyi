@@ -6,20 +6,30 @@
  * Time: 15:12
  */
 namespace  app\helper;
+use app\models\UploadConfig;
 use Obs\ObsClient;
+
 
 class FileUpload
 {
-    private $key = 'EDZZUHSB2YG7PNU2NQRN';
-    private $secret = 'FL3knol0Oy7jUi89rsDnuhOk5Ww1Br68gOuVCEXJ';
-    private $endpoint = 'obs.cn-south-1.myhuaweicloud.com';
-    private $bucket = 'obs-jkyptest';
-    private $domain = 'https://jktestobs.jkslw.cn/';
-
+    private $key;
+    private $secret;
+    private $endpoint;
+    private $bucket;
+    private $domain;
+    public function __construct()
+    {
+        $data = UploadConfig::findOne(1)->toArray();
+        $this->key = $data['key'];
+        $this->secret = $data['secret'];
+        $this->endpoint = $data['endpoint'];
+        $this->bucket = $data['bucket'];
+        $this->domain = $data['domain'];
+    }
+    
     public  function Upload($file)
     {
          $check = $this->checkFile($file);
-
          if($check['objectName']){
              // 创建ObsClient实例
              $obsClient = new ObsClient([
@@ -30,7 +40,7 @@ class FileUpload
 
              $resp = $obsClient->putObject([
                  'Bucket' => $this->bucket,
-                 'Key' => 'images/'.$check['objectName'],
+                 'Key' => 'junyi/'.$check['objectName'],
                  'SourceFile' => $check['SourceFile']  // localfile为待上传的本地文件路径，需要指定到具体的文件名
              ]);
          }
@@ -51,7 +61,9 @@ class FileUpload
         if(!in_array($filePostfix,['jpg','png','jpeg'])){
             return false;
         }
+
         return ['objectName'=>$fileNewName,'SourceFile'=>$file['tmp_name']];
+
     }
 
 

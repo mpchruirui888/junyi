@@ -1,7 +1,8 @@
 <?php
 
 namespace app\modules\admin\controllers;
-
+use app\models\UploadConfig;
+use app\modules\admin\models\AdminForm;
 
 
 /**
@@ -22,4 +23,6 @@ class IndexController extends Controller
     {
         return  $this->renderPartial('demo');
     }
+
+
 }
