@@ -7,15 +7,11 @@
  */
 
 namespace app\modules\admin\controllers;
-
-
 use app\models\AdminUser;
 use app\modules\admin\models\LoginForm;
 
 class LoginController  extends Controller
 {
-
-
     public function actionIndex()
     {
        return  $this->renderPartial('login');

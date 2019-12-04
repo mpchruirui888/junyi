@@ -13,7 +13,12 @@
     <link href="../../Hplus/css/style.css" rel="stylesheet">
     <link href="../../Hplus/css/font-awesome.min.css" rel="stylesheet">
 </head>
-
+<style>
+    img{
+        width:60px;
+        height:60px;
+    }
+</style>
 <body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
 <div id="wrapper">
     <!--左侧导航开始-->
@@ -24,7 +29,7 @@
             <ul class="nav" id="side-menu">
                 <li class="nav-header text-center">
                     <div class="dropdown profile-element">
-                        <span><img alt="image" class="img-circle" src="../../Hplus/img/profile_small.jpg" /></span>
+                        <span><img alt="image" class="img-circle" src="<?= \Yii::$app->session['adminUserHead']?>" /></span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
                                    <span class="block m-t-xs"><strong class="font-bold"><?= \Yii::$app->session['adminUserName']?></strong></span>
@@ -33,7 +38,7 @@
                         </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a class="J_menuItem" href="form_avatar.html">修改头像</a></li>
-                            <li><a class="J_menuItem" href="profile.html">个人资料</a></li>
+                            <li><a class="J_menuItem" href="<?= \Yii::$app->urlManager->createUrl(['admin/admin-user/info'])?>">个人资料</a></li>
                             <li><a class="J_menuItem" href="contacts.html">联系我们</a></li>
                             <li><a class="J_menuItem" href="mailbox.html">信箱</a></li>
                             <li class="divider"></li>

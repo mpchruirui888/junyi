@@ -13,7 +13,6 @@ use yii\db\ActiveRecord;
 
 class AdminUser extends ActiveRecord
 {
-    public $id ;
     public static $table = 'jy_admin_user';
     public static function tableName()
     {
@@ -23,7 +22,8 @@ class AdminUser extends ActiveRecord
     public function rules()
     {
         return [
-            [['user_name','password',],'required']
+            [['username','password'],'required'],
+            [['id'],'integer']
         ];
     }
 

@@ -22,6 +22,7 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/site.css',
         'js/layui/layui/css/layui.css',
+        'font-aeesome-4.7.0/css/font-awesome.min.css'
     ];
     public $js = [
         'js/layui/layui/layui.js',
